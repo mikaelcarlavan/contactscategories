@@ -1,4 +1,5 @@
 # Copyright (C) 2017 Mikael Carlavan <contact@mika-carl.fr>
+# Copyright (C) 2022 Julien Marchand <julien.marchand@iouston.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -29,10 +30,29 @@ ContactsCategoriesSetup = Configuration du module
 Settings = Réglages
 ContactsCategoriesSetupPage = Page de configuration du module
 ContactsCategoriesOptions=Options
-DescCONTACTSCATEGORIES_GOOGLE_MAPS_KEY=Clé API Google Maps
+DescCONTACTSCATEGORIES_GOOGLE_MAPS_KEY = Clé API google map (nécessaire pour les adresses hors de France).
+
 #
 # Page À propos
 #
 About = À propos
-ContactsCategoriesAbout = À propos du module
-ContactsCategoriesAboutPage = Page à propos du module
+ContactCategoriesAbout = À propos du module
+ContactCategoriesAboutPage = Page à propos du module
+ContactCategoriesAboutDescLong = Ce module a été développé par <a href="https://www.mikael-carlavan.fr">Mikael Carlavan</a> et <a href="https://www.iouston.com">Julien Marchand</a> pour <a href="http://www.iouston.com">iouston informatique</a>.<br>La documentation du module est disponible en ligne :<br><a href="%s">%s</a>
+MaintenanceAndSupportTitle = Maintenance et support
+MaintenanceAndSupportDescLong = Aucun support à l'utilisation ou à l'installation n'est fourni. Si besoin, nous pouvons vous accompagner moyennant la prise en charge par vos soins du coût de l’intervention.   <br />L'achat de ce module vous permet d'obtenir une maintenance corrective durant un an à compter de la date d'acquisition. Les <a href="https://iouston.space/gestion/ticketsup/public/">demandes de support doivent être réalisées via notre plateforme de support</a>.
+UpdateTitle = Mise à jour
+UpdateDescLong = L'achat de ce module vous permet d'obtenir gratuitement les mises à jour du module pendant 1 an à compter de la date d’achat du module.
+ModulesTitle = Nos autres modules :
+ModulesDescLong = Retrouvez tous <a href="http://www.iouston.com/systeme-gestion-entreprise-dolibarr/modules-dolibarr/">nos autres modules sur notre site</a> et sur <a href="https://www.dolistore.com/fr/recherche?controller=search&orderby=position&orderway=desc&search_query=iouston&submit_search=">dolistore</a>.
+IoustonDesc = Spécialiste dolibarr : Intégration sur mesure, développement spécifique, formation, maintenance.
+
+# ChangeLog
+ChangeLog = ChangeLog
+ChnageLogVersion = Version
+ChnageLogDate = Date
+ChnageLogUpdates = Modification apportées
+ContactCategoriesFirstVersion = Première version
+ContactCategories101 = Prise en compte des societes, geocodage des adresses depuis la base adresse nationale France
+
+#

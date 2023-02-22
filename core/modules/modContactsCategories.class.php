@@ -1,6 +1,7 @@
 <?php
 /* Copyright (C) 2004-2017 Laurent Destailleur  <eldy@users.sourceforge.net>
  * Copyright (C) 2017 Mikael Carlavan <contact@mika-carl.fr>
+ * Copyright (C) 2022 Julien Marchand <julien.marchand@iouston.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -49,13 +50,13 @@ class modContactsCategories extends DolibarrModules
 
 		// Id for module (must be unique).
 		// Use here a free id (See in Home -> System information -> Dolibarr for list of used modules id).
-		$this->numero = 900000;		// TODO Go on page https://wiki.dolibarr.org/index.php/List_of_modules_id to reserve id number for your module
+		$this->numero = 446251;		// TODO Go on page https://wiki.dolibarr.org/index.php/List_of_modules_id to reserve id number for your module
 		// Key text used to identify module (for permissions, menus, etc...)
 		$this->rights_class = 'contactscategories';
 
 		// Family can be 'crm','financial','hr','projects','products','ecm','technic','interface','other'
 		// It is used to group modules by family in module setup page
-		$this->family = "other";
+		$this->family = "iouston";
 		// Module position in the family
 		$this->module_position = 500;
 		// Gives the possibility to the module, to provide his own family info and position of this family (Overwrite $this->family and $this->module_position. Avoid this)
@@ -64,15 +65,15 @@ class modContactsCategories extends DolibarrModules
 		// Module label (no space allowed), used if translation string 'ModuleContactsCategoriesName' not found (MyModue is name of module).
 		$this->name = preg_replace('/^mod/i','',get_class($this));
 		// Module description, used if translation string 'ModuleContactsCategoriesDesc' not found (MyModue is name of module).
-		$this->description = "Catégorie de contacts API";
+		$this->description = "Catégorie élément API";
 		// Used only if file README.md and README-LL.md not found.
-		$this->descriptionlong = "Le module complète l'API REST de Dolibarr et permet de lister les contacts d'une catégorie en vue d'un affichage sur une carte";
+		$this->descriptionlong = "Le module complète l'API REST de Dolibarr et permet de lister les contacts et les sociétés d'une catégorie en vue d'un affichage sur une carte";
 
-		$this->editor_name = 'Mikael Carlavan';
-		$this->editor_url = 'https://www.mika-carl.fr';
+		$this->editor_name = 'iouston informatique';
+		$this->editor_url = 'http://www.iouston.com';
 
 		// Possible values for version are: 'development', 'experimental', 'dolibarr', 'dolibarr_deprecated' or a version string like 'x.y.z'
-		$this->version = '1.0';
+		$this->version = '1.0.1';
 		// Key used in llx_const table to save module status enabled/disabled (where CONTACTSCATEGORIES is value of property name of module in uppercase)
 		$this->const_name = 'MAIN_MODULE_'.strtoupper($this->name);
 		// Name of image file used for this module.
@@ -174,6 +175,7 @@ class modContactsCategories extends DolibarrModules
 		$sql = array();
 
 		$this->_load_tables('/contactscategories/sql/');
+		$this->_load_tables('/societescategories/sql/');
 
 		return $this->_init($sql, $options);
 	}

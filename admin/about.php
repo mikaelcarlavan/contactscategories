@@ -22,21 +22,6 @@
  * \brief   About page of module ContactsCategories.
  */
 
-/*
-// Load Dolibarr environment
-$res=0;
-// Try main.inc.php into web root known defined into CONTEXT_DOCUMENT_ROOT (not always defined)
-if (! $res && ! empty($_SERVER["CONTEXT_DOCUMENT_ROOT"])) $res=@include($_SERVER["CONTEXT_DOCUMENT_ROOT"]."/main.inc.php");
-// Try main.inc.php into web root detected using web root caluclated from SCRIPT_FILENAME
-$tmp=empty($_SERVER['SCRIPT_FILENAME'])?'':$_SERVER['SCRIPT_FILENAME'];$tmp2=realpath(__FILE__); $i=strlen($tmp)-1; $j=strlen($tmp2)-1;
-while($i > 0 && $j > 0 && isset($tmp[$i]) && isset($tmp2[$j]) && $tmp[$i]==$tmp2[$j]) { $i--; $j--; }
-if (! $res && $i > 0 && file_exists(substr($tmp, 0, ($i+1))."/main.inc.php")) $res=@include(substr($tmp, 0, ($i+1))."/main.inc.php");
-if (! $res && $i > 0 && file_exists(dirname(substr($tmp, 0, ($i+1)))."/main.inc.php")) $res=@include(dirname(substr($tmp, 0, ($i+1)))."/main.inc.php");
-// Try main.inc.php using relative path
-if (! $res && file_exists("../../main.inc.php")) $res=@include("../../main.inc.php");
-if (! $res && file_exists("../../../main.inc.php")) $res=@include("../../../main.inc.php");
-if (! $res) die("Include of main fails");
-*/
 $res=@include("../../main.inc.php");                   // For root directory
 if (! $res) $res=@include("../../../main.inc.php");    // For "custom" directory
 
@@ -64,14 +49,15 @@ $action = GETPOST('action', 'alpha');
  * Actions
  */
 
-// None
+$versions = array(
+    array('version' => '1.0.0', 'date' => '25/01/2019', 'updates' => $langs->trans('ContactCategoriesFirstVersion')),
+    array('version' => '1.0.1', 'date' => '06/01/2021', 'updates' => $langs->trans('ContactCategories101')),
+);
 
 
 /*
  * View
  */
-
-$form = new Form($db);
 
 $page_name = "ContactsCategoriesAbout";
 llxHeader('', $langs->trans($page_name));
@@ -94,11 +80,62 @@ dol_fiche_head(
 // About page goes here
 echo $langs->trans("ContactsCategoriesAboutPage");
 
-echo '<br>';
+echo '<br />';
 
-dol_include_once('/contactscategories/core/modules/modTest.class.php');
-$tmpmodule = new modContactsCategories($db);
-print $tmpmodule->getDescLong();
+$url = 'http://www.iouston.com/systeme-gestion-entreprise-dolibarr/modules-dolibarr/module-dolibarr-encours-client';
+
+print '<h2>'.$langs->trans("About").'</h2>';
+print $langs->trans("ContactCategoriesAboutDescLong", $url, $url);
+
+print '<h2>'.$langs->trans("MaintenanceAndSupportTitle").'</h2>';
+print $langs->trans("MaintenanceAndSupportDescLong");
+
+print '<h2>'.$langs->trans("UpdateTitle").'</h2>';
+print $langs->trans("UpdateDescLong");
+
+print '<h2>'.$langs->trans("ModulesTitle").'</h2>';
+print $langs->trans("ModulesDescLong");
+
+echo '<br />';
+
+print '<a href="http://www.dolistore.com">'.img_picto('dolistore', dol_buildpath('/contactscategories/img/dolistore.png', 1), '', 1).'</a>';
+
+print '<hr />';
+
+print '<a href="http://www.iouston.com">'.img_picto('iouston', dol_buildpath('/contactscategories/img/iouston.png', 1), '', 1).'</a>';
+
+echo '<br />';
+
+print $langs->trans("IoustonDesc");
+
+print '<hr />';
+print '<h2>'.$langs->trans("ChangeLog").'</h2>';
+
+
+print '<table class="noborder" width="100%">';
+print '<tr class="liste_titre">';
+print '<td>'.$langs->trans("ChnageLogVersion").'</td>';
+print '<td>'.$langs->trans("ChnageLogDate").'</td>';
+print '<td>'.$langs->trans("ChnageLogUpdates").'</td>';
+print "</tr>\n";
+
+foreach ($versions as $version)
+{
+    print '<tr class="oddeven">';
+    print '<td>';
+    print $version['version'];
+    print '</td>';
+    print '<td>';
+    print $version['date'];
+    print '</td>';
+    print '<td>';
+    print $version['updates'];
+    print '</td>';
+    print '</tr>';
+}
+
+
+print '</table>';
 
 // Page end
 dol_fiche_end();

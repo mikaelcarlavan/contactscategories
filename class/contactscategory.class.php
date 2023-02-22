@@ -82,7 +82,8 @@ class ContactsCategory extends CommonObject
 	/**
 	 * 	Load contact info into memory from database
 	 *
-	 * 	@param		int		$id		Id of category
+	 * 	@param		int			$id					Id of category
+	 * 	@param		string		$element_type		contact, societe, etc...
 	 * 	@return		int				<0 if KO, >0 if OK
 	 */
 	public function fetch($contact_id = 0)

@@ -1,6 +1,7 @@
 <?php
 /* Copyright (C) 2015   Jean-François Ferry     <jfefe@aternatik.fr>
- * Copyright (C) ---Put here your own copyright and developer email---
+ 
+ * Copyright (C) 2022 Julien Marchand <julien.marchand@iouston.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,28 +20,27 @@
 use Luracast\Restler\RestException;
 
 /**
- * \file    class/api_contactscategory.class.php
+ * \file    class/api_societescategory.class.php
  * \ingroup contactscategories
- * \brief   File for API management of contactscategory.
+ * \brief   File for API management of societescategory.
  */
-dol_include_once('/contactscategories/class/contactscategory.class.php');
 dol_include_once('/contactscategories/class/societescategory.class.php');
 
 /**
- * API class for contactscategories contactscategory
+ * API class for contactscategories societescategory
  *
  * @smart-auto-routing false
  * @access protected
  * @class  DolibarrApiAccess {@requires user,external}
  */
-class ContactsCategories extends DolibarrApi
+class SocietesCategories extends DolibarrApi
 {
 
 
     /**
-     * @var ContactsCategory $contactscategory {@type ContactsCategory}
+     * @var societescategory $societescategory {@type societescategory}
      */
-    public $contactscategory;
+    public $societescategory;
 
     /**
      * Constructor
@@ -51,17 +51,16 @@ class ContactsCategories extends DolibarrApi
     {
 		global $db, $conf;
 		$this->db = $db;
-        $this->contactscategory = new ContactsCategory($this->db);
         $this->societescategory = new SocietesCategory($this->db);
     }
 
 
     /**
-     * Get properties of a contactscategory object
+     * Get properties of a societescategory object
      *
-     * Return an array with contactscategory informations
+     * Return an array with societescategory informations
      *
-     * @param 	int 	$id ID of contactscategory
+     * @param 	int 	$id ID of societescategory
      * @return 	array|mixed data without useless information
 	 *
      * @throws 	RestException
@@ -74,51 +73,7 @@ class ContactsCategories extends DolibarrApi
 		}
 
         
-        $result = $this->contactscategory->contacts($id);
-        if( ! $result ) {
-            throw new RestException(404, 'ContactsCategory not found');
-        }
-
-        $contacts = $this->contactscategory->contacts;
-        /*if( ! DolibarrApi::_checkAccessToResource('contactscategory', $this->contactscategory->id)) {
-            throw new RestException(401, 'Access not allowed for login '.DolibarrApiAccess::$user->login);
-        }*/
-        $data = array();
-
-        if (sizeof($contacts))
-        {
-            foreach ($contacts as $contact)
-            {
-                $data[] = $this->_cleanObjectDatas($contact);
-            }
-        }
-
-        
-		return $data;
-    }
-
-
-    /**
-     * Get properties of a thirdparty object by email.
-     *
-     * Return an array with thirdparty informations
-     *
-     * @param string    $email  Email of third party to load
-     * @return array|mixed Cleaned Societe object
-     *
-     * @url     GET societe/{catid}
-     *
-     * @throws RestException
-     */
-    
-    function getsociete($catid)
-    {
-
-        if(! DolibarrApiAccess::$user->rights->contactscategories->read) {
-            throw new RestException(401);
-        }
-        
-        $result = $this->societescategory->societes($catid);
+        $result = $this->societescategory->societes($id);
         if( ! $result ) {
             throw new RestException(404, 'societescategory not found');
         }
@@ -138,8 +93,8 @@ class ContactsCategories extends DolibarrApi
         }
 
         
-        return $data;
+		return $data;
     }
 
-
+  
 }
