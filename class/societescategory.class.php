@@ -54,7 +54,7 @@ class SocietesCategory extends CommonObject
 	/**
 	 * @var array  Does societescategory support multicompany module ? 0=No test on entity, 1=Test with field entity, 2=Test with link by societe
 	 */
-	protected $ismultientitymanaged = 0;
+	public $ismultientitymanaged = 0;
 	/**
 	 * @var string String with name of icon for societescategory
 	 */
