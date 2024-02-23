@@ -1,6 +1,7 @@
 <?php
 /* Copyright (C) 2004-2017 Laurent Destailleur  <eldy@users.sourceforge.net>
  * Copyright (C) 2017 Mikael Carlavan <contact@mika-carl.fr>
+ * Copyright (C) 2023 Julien Marchand <julien.marchand@iouston.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -78,11 +79,8 @@ dol_fiche_head(
 );
 
 // About page goes here
-echo $langs->trans("ContactsCategoriesAboutPage");
 
-echo '<br />';
-
-$url = 'http://www.iouston.com/systeme-gestion-entreprise-dolibarr/modules-dolibarr/module-dolibarr-encours-client';
+$url = 'https://www.iouston.com/module-dolibarr/cocamap/';
 
 print '<h2>'.$langs->trans("About").'</h2>';
 print $langs->trans("ContactCategoriesAboutDescLong", $url, $url);
